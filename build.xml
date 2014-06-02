@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<project name="TCC4Java" default="jar" basedir=".">
+	<property file="build.properties" />
+	<property environment="env"/>
+
+	<path id="base.classpath">
+		<fileset dir="${lib.dir}" includes="*.jar" />
+		<pathelement location="${src.build.dir}" />
+		<pathelement location="${test.build.dir}" />
+	</path>
+
+	<target name="clean">
+		<delete failonerror="false">
+			<fileset dir="${build.dir}"/>
+			<fileset dir="${dist.dir}"/>
+			<fileset dir="${doc.dir}"/>
+		</delete>
+		<delete failonerror="false" file="${project.name}-${project.version}-all.jar"/>
+	</target>
+	
+	<target name="prepare">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${src.build.dir}" />
+		<mkdir dir="${src.build.dir}/META-INF" />
+		<mkdir dir="${test.build.dir}" />
+		<mkdir dir="${test.build.dir}/META-INF" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${doc.dir}"/>
+	</target>
+
+	<target name="compile-java" depends="clean, prepare">
+		<javac 
+			srcdir="${src.dir}"
+			destdir="${src.build.dir}"
+			classpathref = "base.classpath"
+			debug="${javac.debug}" 
+			target="${javac.target}"
+			deprecation="${javac.deprecation}" 
+			optimize="${javac.optimize}"
+			excludes="${javac.excludes}"
+			encoding="${project.encoding}" >		
+			<compilerarg value="-Xlint:unchecked"/>
+		</javac>
+		<javac 
+			srcdir="${test.dir}"
+			destdir="${test.build.dir}"
+			classpathref = "base.classpath"
+			debug="${javac.debug}" 
+			target="${javac.target}"
+			deprecation="${javac.deprecation}" 
+			optimize="${javac.optimize}"
+			excludes="${javac.excludes}"
+			encoding="${project.encoding}" >		
+			<compilerarg value="-Xlint:unchecked"/>
+		</javac>
+	</target>
+	
+	<target name="generate-doc" depends="clean, prepare">
+		<javadoc destdir="${doc.dir}" encoding="${project.encoding}" docencoding="${project.encoding}">
+			<packageset dir="${src.dir}">
+				<include name="**"/>
+			</packageset>
+		</javadoc>
+	</target>
+
+	<target name="jar" depends="compile-java, generate-doc">
+		<jar jarfile="${dist.dir}/${project.name}-${project.version}.jar">
+			<fileset dir="${src.build.dir}">
+				<include name="**/*" />
+			</fileset>
+			<manifest>
+				<attribute name="Manifest-Version" value="1.0"/>
+				<attribute name="Built-By" value="zhengbo.wang"/>
+				<attribute name="Email" value="zhengbowang1984@gmail.com"/>
+			</manifest>
+		</jar>
+		<jar jarfile="${dist.dir}/${project.name}-${project.version}-test.jar">
+			<fileset dir="${test.build.dir}">
+				<include name="**/*" />
+			</fileset>
+			<manifest>
+				<attribute name="Manifest-Version" value="1.0"/>
+				<attribute name="Built-By" value="zhengbo.wang"/>
+				<attribute name="Email" value="zhengbowang1984@gmail.com"/>
+			</manifest>
+		</jar>
+		<jar jarfile="${dist.dir}/${project.name}-${project.version}-javadoc.jar">
+			<fileset dir="${doc.dir}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+		<jar jarfile="${project.name}-${project.version}-all.jar">
+			<fileset dir=".">
+				<include name="${src.dir}/**" />
+			</fileset>
+			<fileset dir=".">
+				<include name="${test.dir}/**" />
+			</fileset>
+			<fileset dir=".">
+				<include name="${example.dir}/**" />
+			</fileset>
+			<fileset dir=".">
+				<include name="${lib.dir}/**" />
+			</fileset>
+			<fileset dir=".">
+				<include name="${dist.dir}/**" />
+			</fileset>
+			<fileset dir=".">
+				<include name="tcc/**" />
+			</fileset>
+			<fileset dir=".">
+				<include name=".classpath" />
+				<include name=".project" />
+				<include name="ChangeLog.txt" />
+				<include name="build.bat" />
+				<include name="build.properties" />
+				<include name="build.xml" />
+				<include name="readme.txt" />
+				<include name="runTest.bat" />
+				<include name="runTest.sh" />
+				<include name="TCC4Java-License.txt" />
+			</fileset>
+		</jar>
+	</target>
+</project>
