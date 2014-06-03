@@ -1,2 +1,2 @@
-java -cp .\lib\commons-io-2.4.jar;.\lib\hamcrest-core-1.3.jar;.\lib\jna-4.1.0.jar;.\lib\junit-4.11.jar;.\lib\slf4j-api-1.7.7.jar;.\lib\slf4j-simple-1.7.7.jar;.\dist\TCC4Java-0.1.jar;.\dist\TCC4Java-0.1-test.jar org.junit.runner.JUnitCore cn.com.tcc.AllTests
+java -cp .\lib\commons-io-2.4.jar;.\lib\hamcrest-core-1.3.jar;.\lib\jna-4.1.0.jar;.\lib\junit-4.11.jar;.\lib\slf4j-api-1.7.7.jar;.\lib\slf4j-simple-1.7.7.jar;.\dist\0.1\TCC4Java-0.1.jar;.\dist\0.1\TCC4Java-0.1-test.jar org.junit.runner.JUnitCore cn.com.tcc.AllTests
 pause

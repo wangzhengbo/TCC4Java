@@ -32,7 +32,7 @@ public final class TCC {
 	private static final String OS_NAME_AIX = "AIX";
 	private static final String OS_NAME_GNU = "gnu";
 	private static final String OS_NAME_FREEBSD = "FreeBSD";
-	private static final String OS_NAME_KFREEBSD = "kFreeBSD";
+	private static final String OS_NAME_KFREEBSD = "GNU/kFreeBSD";
 	private static final String OS_NAME_NETBSD = "NetBSD";
 	private static final String OS_NAME_DRAGONFLYBSD = "DragonFly";
 	private static final String OS_NAME_MIDNIGHTBSD = "MidnightBSD";
@@ -430,7 +430,8 @@ public final class TCC {
 				Platform.FREEBSD, "freebsd"), OPENBSD(Platform.OPENBSD,
 				"openbsd"), WINDOWSCE(Platform.WINDOWSCE, "w32ce"), AIX(
 				TCC.AIX, OS_NAME_AIX), ANDROID(TCC.ANDROID, "android"), GNU(
-				TCC.GNU, OS_NAME_GNU), KFREEBSD(TCC.KFREEBSD, OS_NAME_KFREEBSD), NETBSD(
+				TCC.GNU, OS_NAME_GNU), KFREEBSD(TCC.KFREEBSD, OS_NAME_KFREEBSD
+				.substring(OS_NAME_KFREEBSD.indexOf('/') + 1)), NETBSD(
 				TCC.NETBSD, OS_NAME_NETBSD), DRAGONFLYBSD(TCC.DRAGONFLYBSD,
 				OS_NAME_DRAGONFLYBSD);
 

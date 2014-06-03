@@ -8,7 +8,16 @@ What is TCC?
 What is TCC4Java?
   1. TCC4Java is a java binding for TCC. With TCC4Java, you can use TCC as a
      backend for dynamic code generation.
-  2. TCC4Java has been tested under the following os:
+  2. Supported os:
+     Windows x86/x64
+     Linux x86/x64/arm
+     Mac OS X
+     Debian kFreeBSD x86/x64
+     FreeBSD x86/x64
+     NetBSD x86/x64
+     DragonFlyBSD x86/x64
+     
+     TCC4Java has been tested under the following os:
      Windows XP SP3 x86
      Windows 7 SP1 x86
      Ubuntu 12.04 x86/x64
