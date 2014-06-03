@@ -27,4 +27,5 @@ What is TCC4Java?
      NetBSD 6.1.4 x86/x64
      DragonFlyBSD 3.6.2 x86/x64
   3. TCC4Java is released under Apache License 2.0.
-  4. TCC4Java's homepage is https://github.com/wangzhengbo/TCC4Java.
+  4. TCC4Java's homepage is https://github.com/wangzhengbo/TCC4Java, you can download
+     the compiled jar from https://sourceforge.net/projects/tcc4java.
