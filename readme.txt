@@ -21,6 +21,7 @@ What is TCC4Java?
      Windows XP SP3 x86
      Windows 7 SP1 x86
      Ubuntu 12.04 x86/x64
+     Debian Wheezy Raspbian 2014-01-07
      Mac OS X 10.7
      Debian kFreeBSD 7.5.0 x86/x64
      FreeBSD 9.0 x86/x64 (The FreeBSD based os such as GhostBSD, PC-BSD, ArchBSD, MidnightBSD are also supported)
