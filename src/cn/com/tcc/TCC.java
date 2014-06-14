@@ -52,7 +52,7 @@ public final class TCC {
 		}
 		System.setProperty("jna.library.path",
 				System.getProperty("java.io.tmpdir"));
-		init(System.getenv(ENV_CONFIG_TCC_DIR));
+		init(System.getProperty(ENV_CONFIG_TCC_DIR));
 	}
 
 	public static void init(String tccPath) {
@@ -148,10 +148,7 @@ public final class TCC {
 
 	protected static String getOSName() {
 		boolean validOS = false;
-		String os = System.getenv(ENV_CONFIG_OS);
-		if (os == null) {
-			os = System.getProperty(ENV_CONFIG_OS);
-		}
+		String os = System.getProperty(ENV_CONFIG_OS);
 		if (os != null) {
 			for (OS item : OS.values()) {
 				if (item.getName().equalsIgnoreCase(os)) {

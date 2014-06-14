@@ -37,7 +37,6 @@ public class SetLibPathTest extends BaseTest {
 		} else {
 			final StringHolder msgHolder = new StringHolder();
 			state.setErrorFunc(new ErrorFunction() {
-				@Override
 				public void callback(Pointer opaque, String msg) {
 					msgHolder.value = msg;
 				}

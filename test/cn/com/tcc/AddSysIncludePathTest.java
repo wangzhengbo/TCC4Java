@@ -16,7 +16,6 @@ public class AddSysIncludePathTest extends BaseTest {
 		State state = new State();
 		final StringHolder msgHolder = new StringHolder();
 		state.setErrorFunc(new ErrorFunction() {
-			@Override
 			public void callback(Pointer opaque, String msg) {
 				msgHolder.value = msg;
 			}

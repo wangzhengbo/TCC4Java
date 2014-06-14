@@ -18,7 +18,6 @@ public class SetErrorFuncTest extends BaseTest {
 		final ObjHolder opaqueHolder = new ObjHolder();
 		final StringHolder msgHolder = new StringHolder();
 		state.setErrorFunc(new ErrorFunction() {
-			@Override
 			public void callback(Pointer opaque, String msg) {
 				opaqueHolder.value = opaque;
 				msgHolder.value = msg;
@@ -45,7 +44,6 @@ public class SetErrorFuncTest extends BaseTest {
 				intHolder.value = 10;
 			}
 		}, new ErrorFunction() {
-			@Override
 			public void callback(Pointer opaque, String msg) {
 				opaqueHolder.value = opaque;
 				msgHolder.value = msg;

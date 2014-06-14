@@ -19,7 +19,6 @@ public class CompileStringTest extends BaseTest {
 		state = new State();
 		final StringHolder msgHolder = new StringHolder();
 		state.setErrorFunc(new ErrorFunction() {
-			@Override
 			public void callback(Pointer opaque, String msg) {
 				msgHolder.value = msg;
 			}

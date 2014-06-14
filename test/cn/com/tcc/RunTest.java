@@ -31,7 +31,7 @@ public class RunTest extends BaseTest {
 
 		state = new State();
 		Assert.assertTrue(state.compile("test/run.c"));
-		Assert.assertEquals(6, state.run("1", "2", "3"));
+		Assert.assertEquals(6, state.run("run", "1", "2", "3"));
 		state.delete();
 	}
 }

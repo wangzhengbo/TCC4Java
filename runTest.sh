@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-CLASSPATH=./lib/commons-io-2.4.jar:./lib/hamcrest-core-1.3.jar:./lib/junit-4.11.jar:./lib/slf4j-api-1.7.7.jar:./lib/slf4j-simple-1.7.7.jar:./dist/0.1/TCC4Java-0.1.jar:./dist/0.1/TCC4Java-0.1-test.jar
+CLASSPATH=./lib/commons-io-2.2.jar
+CLASSPATH=$CLASSPATH:./lib/hamcrest-core-1.3.jar
+CLASSPATH=$CLASSPATH:./lib/junit-4.11.jar
+CLASSPATH=$CLASSPATH:./lib/slf4j-api-1.7.7.jar
+CLASSPATH=$CLASSPATH:./lib/slf4j-simple-1.7.7.jar
+CLASSPATH=$CLASSPATH:./dist/0.2/TCC4Java-0.2.jar
+CLASSPATH=$CLASSPATH:./dist/0.2/TCC4Java-0.2-test.jar
 
 if [ "$(uname -s)" == "GNU/kFreeBSD" ]; then
   LIB_JNA=./lib/kFreeBSD/jna-3.2.7.jar

@@ -17,7 +17,7 @@ import com.sun.jna.Pointer;
 
 public class State {
 	public static final int ERROR_RETURN_VALUE = -1;
-	public static final Pointer TCC_RELOCATE_AUTO = Pointer.createConstant(1);
+	public final Pointer TCC_RELOCATE_AUTO = Pointer.createConstant(1);
 	private final TCCLibrary tcc;
 	private final Pointer tccState;
 	private boolean deleted = false;
@@ -65,7 +65,7 @@ public class State {
 
 	/* free a TCC compilation context */
 	public void delete() {
-		logger.debug(String.format("Delete state."));
+		logger.debug("Delete state.");
 		if (!deleted) {
 			tcc.tcc_delete(tccState);
 			deleted = true;
@@ -95,7 +95,7 @@ public class State {
 	 * @param errorFunc
 	 */
 	public void setErrorFunc(Pointer errorOpaque, ErrorFunction errorFunc) {
-		logger.debug(String.format("Set error function."));
+		logger.debug("Set error function.");
 		checkStatus();
 		// prevents the JVM garbage collection it
 		this.errorOpaque = errorOpaque;
@@ -110,7 +110,7 @@ public class State {
 	 * @param errorFunc
 	 */
 	public void setErrorFunc(Callback errorOpaque, ErrorFunction errorFunc) {
-		logger.debug(String.format("Set error function."));
+		logger.debug("Set error function.");
 		checkStatus();
 		// prevents the JVM garbage collection it
 		this.errorOpaqueCallback = errorOpaque;
@@ -263,7 +263,7 @@ public class State {
 	 * @throws IOException
 	 */
 	public boolean compile(File file, String encoding) throws IOException {
-		if ((encoding == null) || (encoding.length() == 0)) {
+		if ((encoding == null) || (encoding.trim().length() == 0)) {
 			logger.debug(String.format("Compile file %s.",
 					file.getAbsolutePath()));
 			return compileString_(FileUtils.readFileToString(file));
@@ -297,7 +297,7 @@ public class State {
 		logger.debug(String.format("Set output type to %s.",
 				outputType.getDescription()));
 		checkStatus();
-		return (tcc.tcc_set_output_type(tccState, outputType.ordinal()) != ERROR_RETURN_VALUE);
+		return (tcc.tcc_set_output_type(tccState, outputType.getType()) != ERROR_RETURN_VALUE);
 	}
 
 	/**
@@ -412,7 +412,7 @@ public class State {
 	 * returns false if error.
 	 */
 	public int relocate(Pointer ptr) {
-		logger.debug(String.format("Relocate."));
+		logger.debug("Relocate.");
 		checkStatus();
 		return tcc.tcc_relocate(tccState, ptr);
 	}
@@ -423,7 +423,7 @@ public class State {
 	 * returns false if error.
 	 */
 	public boolean relocateAuto() {
-		logger.debug(String.format("Auto relocate."));
+		logger.debug("Auto relocate.");
 		return (relocate(TCC_RELOCATE_AUTO) != ERROR_RETURN_VALUE);
 	}
 
