@@ -24,7 +24,10 @@ public final class TCC {
 	protected static String tccPath = "";
 
 	/* TCC library name */
-	private static final String DLL_LIB_NAME = "tcc";
+	private static final String LIB_TCC = "tcc";
+
+	/* GCC library name */
+	private static final String LIB_GCC = "libgcc_s.so.1";
 
 	private static final String ENV_CONFIG_TCC_DIR = "CONFIG_TCCDIR";
 	private static final String ENV_CONFIG_OS = "CONFIG_OS";
@@ -59,7 +62,14 @@ public final class TCC {
 		if ((tccPath != null) && (tccPath.trim().length() > 0)
 				&& !tccPath.equals(TCC.tccPath)) {
 			TCC.tccPath = tccPath;
-			logger.info(String.format("Set tccPath to %s.", tccPath));
+			logger.debug(String.format("Set tccPath to %s.", tccPath));
+
+			File libGcc = new File(TCC.getSharedLibPath(), LIB_GCC);
+			if (libGcc.isFile() && libGcc.exists()) {
+				System.load(libGcc.getAbsolutePath());
+				logger.debug(String.format("Load library %s successfully.",
+						LIB_GCC));
+			}
 		}
 	}
 
@@ -72,7 +82,7 @@ public final class TCC {
 			try {
 				tcc = loadNativeLibrary();
 
-				logger.info(String.format("%s initialized for thread %s.",
+				logger.debug(String.format("%s initialized for thread %s.",
 						TCC.class.getSimpleName(), Thread.currentThread()
 								.getName()));
 			} catch (Throwable e) {
@@ -134,7 +144,7 @@ public final class TCC {
 				.getAbsolutePath();
 	}
 
-	protected static String getSharedLibPath() {
+	public static String getSharedLibPath() {
 		return new File(tccPath, getSharedLibPath(getOSName()))
 				.getAbsolutePath();
 	}
@@ -269,7 +279,7 @@ public final class TCC {
 	private static TCCLibrary loadNativeLibrary() {
 		try {
 			// Get what the system "thinks" the library name should be.
-			String libName = DLL_LIB_NAME;
+			String libName = LIB_TCC;
 			String libNativeName = System.mapLibraryName(libName);
 
 			// Slice up the library name.

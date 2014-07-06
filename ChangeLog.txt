@@ -1,3 +1,6 @@
+07/06/2014 - 0.3
+  1. Load libgcc_s.so.1 if it exists in tcc lib path.
+  
 06/14/2014 - 0.2
   1. Fixed libtcc.dylib and libtcc1.a error for Mac OS X.
   2. Add Solaris x86 support.

@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+TCC4JAVA_VERSION=0.3
+
 CLASSPATH=./lib/commons-io-2.2.jar
 CLASSPATH=$CLASSPATH:./lib/hamcrest-core-1.3.jar
 CLASSPATH=$CLASSPATH:./lib/junit-4.11.jar
 CLASSPATH=$CLASSPATH:./lib/slf4j-api-1.7.7.jar
 CLASSPATH=$CLASSPATH:./lib/slf4j-simple-1.7.7.jar
-CLASSPATH=$CLASSPATH:./dist/0.2/TCC4Java-0.2.jar
-CLASSPATH=$CLASSPATH:./dist/0.2/TCC4Java-0.2-test.jar
+CLASSPATH=$CLASSPATH:./dist/$TCC4JAVA_VERSION/TCC4Java-$TCC4JAVA_VERSION.jar
+CLASSPATH=$CLASSPATH:./dist/$TCC4JAVA_VERSION/TCC4Java-$TCC4JAVA_VERSION-test.jar
 
 if [ "$(uname -s)" == "GNU/kFreeBSD" ]; then
   LIB_JNA=./lib/kFreeBSD/jna-3.2.7.jar

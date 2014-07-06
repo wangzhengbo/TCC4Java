@@ -28,7 +28,7 @@ What is TCC4Java?
      FreeBSD 9.0 x86/x64 (The FreeBSD based os such as GhostBSD, PC-BSD, ArchBSD, MidnightBSD are also supported)
      NetBSD 6.1.4 x86/x64
      DragonFlyBSD 3.6.2 x86/x64
-     Solaris 10/11 x86
+     Solaris 9/10/11 x86
   4. Supported jdk:
      jdk 1.5 or later
   5. TCC4Java is released under Apache License 2.0.

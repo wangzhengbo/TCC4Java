@@ -141,7 +141,8 @@ public class State {
 	public boolean addIncludePath(String includePath) {
 		logger.debug(String.format("Add include path %s.", includePath));
 		checkStatus();
-		return (tcc.tcc_add_include_path(tccState, includePath) != ERROR_RETURN_VALUE);
+		return (tcc.tcc_add_include_path(tccState,
+				new File(includePath).getAbsolutePath()) != ERROR_RETURN_VALUE);
 	}
 
 	/**
@@ -153,7 +154,8 @@ public class State {
 	public boolean addSysIncludePath(String includePath) {
 		logger.debug(String.format("Add system include path %s.", includePath));
 		checkStatus();
-		return (tcc.tcc_add_sysinclude_path(tccState, includePath) != ERROR_RETURN_VALUE);
+		return (tcc.tcc_add_sysinclude_path(tccState,
+				new File(includePath).getAbsolutePath()) != ERROR_RETURN_VALUE);
 	}
 
 	/**
@@ -206,7 +208,8 @@ public class State {
 	public boolean addFile(String filePath) {
 		logger.debug(String.format("Add file %s.", filePath));
 		checkStatus();
-		return (tcc.tcc_add_file(tccState, filePath) != ERROR_RETURN_VALUE);
+		return (tcc
+				.tcc_add_file(tccState, new File(filePath).getAbsolutePath()) != ERROR_RETURN_VALUE);
 	}
 
 	/**
